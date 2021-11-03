@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import reactDom from "react-dom";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+//CSS
+import "./index.css";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+// data
+import { books } from "./Books";
+
+//components
+import Book from "./Book";
+
+//relative path importing
+import { greeting } from "./testing/testing";
+
+const BookList = () => {
+  console.log(greeting);
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        return <Book key={book.id} {...book} />;
+      })}
+    </section>
+  );
+};
+
+reactDom.render(<BookList />, document.getElementById("root"));
+
+//https://m.media-amazon.com/images/I/91RVshgQn1S._AC_UL480_FMwebp_QL65_.jpg
+//The Silent Patient
+//Alex Michaelides, Jack Hawkins, et al.
